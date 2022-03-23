@@ -98,7 +98,7 @@ const Table = (props) => {
               <i className="fas fa-lock-open"></i>
             </div>
           </Link>
-          <Link
+          {/* <Link
             className="table"
             to="/table1"
             onClick={() => Auth.logout(() => localStorage.removeItem("bjwt"))}
@@ -106,11 +106,12 @@ const Table = (props) => {
             <div>
               <i className="fas fa-lock"></i>
             </div>
-          </Link>
+          </Link> */}
         </>
       ) : !auth ? (
-        <Link className="table" to="/login">
-          <div>log</div>
+        // <Link className="table" to="/login">
+        <Link className="table" to="/admin/:id">
+          <i className="fas fa-lock-open"></i>
         </Link>
       ) : null}
       <Link className="table " to="/burgerer">
