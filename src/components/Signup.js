@@ -10,6 +10,7 @@ const Signup = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [users, setUsers] = useState([]);
+
   const upload = (e) => {
     e.preventDefault();
     // const signForm = {
@@ -119,31 +120,33 @@ const Signup = (props) => {
           </p>
         </form>
       </div>
-      {users.map((user) => {
-        return (
-          <div className="menuItemsList" key={user._id}>
-            <div className="EachProductItem">
-              <div className="mid">
-                {user.isAdmin ? (
-                  <i className="fas fa-user-secret" id="user"></i>
-                ) : (
-                  <i className="fas fa-user-tie"></i>
-                )}
-                <h3> {user.name}</h3>
-                <h3> {user.isAdmin ? "Admin" : "Staff"}</h3>
+      {users
+        ? users.map((user) => {
+            return (
+              <div className="menuItemsList" key={user._id}>
+                <div className="EachProductItem">
+                  <div className="mid">
+                    {user.isAdmin ? (
+                      <i className="fas fa-user-secret" id="user"></i>
+                    ) : (
+                      <i className="fas fa-user-tie"></i>
+                    )}
+                    <h3> {user.name}</h3>
+                    <h3> {user.isAdmin ? "Admin" : "Staff"}</h3>
+                  </div>
+                  <div className="mid">
+                    <button
+                      className="editBtn del"
+                      onClick={() => deleteUser(user._id)}
+                    >
+                      DELETE
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="mid">
-                <button
-                  className="editBtn del"
-                  onClick={() => deleteUser(user._id)}
-                >
-                  DELETE
-                </button>
-              </div>
-            </div>
-          </div>
-        );
-      })}
+            );
+          })
+        : null}
     </div>
   );
 };
